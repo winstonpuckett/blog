@@ -1,0 +1,4 @@
+{% if env.GOOGLE_ADSENSE_DATA_AD_CLIENT and env.GOOGLE_ADSENSE_DATA_AD_CLIENT != "" %}
+<!-- Google Adsense -->
+<script data-ad-client="{{ env.GOOGLE_ADSENSE_DATA_AD_CLIENT }}" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+{% endif %}

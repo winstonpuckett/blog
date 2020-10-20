@@ -1,0 +1,88 @@
+:root {
+    --c-background: #fff;
+    --c-background-dark: #f7f8f9;
+    --c-foreground-light: #959ea9;
+    --c-foreground: #555e69;
+    --c-foreground-dark: #33383f;
+    --c-highlight: #10bcf9;
+    --c-border: #e9ebed;
+}
+
+html {
+    font-family: "Roboto", Helvetica, sans-serif;
+    font-size: 112.5%;
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--c-background);
+    color: var(--c-foreground);
+    line-height: 1.66667;
+}
+
+img {
+    height: 20vw;
+    width: 100%;
+    object-fit: cover;
+}
+
+main {
+    width: 95%;
+    max-width: 900px;
+    margin: auto;
+}
+
+aside {
+    max-width: 75%;
+    margin: auto;
+}
+
+pre {
+    background: var(--c-background-dark);
+    color: var(--c-foreground-dark);
+    padding: 10px;
+    border: 1px solid var(--c-border);
+    border-radius: 5px;
+}
+
+code,
+pre {
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 0.88889rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--c-foreground-dark);
+    font-weight: bold;
+    line-height: 1.2;
+    margin: 1.66667rem 0 0.83333rem;
+    text-rendering: optimizeLegibility;
+}
+
+.post__title:after {
+    border-left: 30px solid var(--c-highlight);
+    box-shadow: inset 0 1px 0 0 var(--c-border);
+    display: block;
+    content: "";
+    height: 3px;
+    margin-top: 1rem;
+}
+
+footer {
+    border-top: 1px solid var(--c-border);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    padding: 0 20px;
+}

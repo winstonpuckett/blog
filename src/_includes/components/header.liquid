@@ -1,0 +1,26 @@
+{% capture headerCss %}{% include css/header.css %}{% endcapture %}
+<style>{{ headerCss | cssmin | safe }}</style>
+<header>
+    <nav>
+        <div class="nav__bar">
+            <a class="nav__homebutton" href="/">
+                <span class="nav__logo"><img src="{{ devProfile.profile_image }}" class="avatar"
+                        alt="Author Avatar"></span>
+                <div class="nav__titlewrapper">
+                    <span class="nav__title">{{ devProfile.name }}</span>
+                    <span class="nav__subtitle">{{ devProfile.summary }}</span>
+                </div>
+            </a>
+            <button class="nav__hamburger" aria-label="Home button" onclick="const links = document.querySelector('.nav__links'); links.classList.contains('active') ? links.classList.remove('active') : links.classList.add('active');const hamburger = document.querySelector('.nav__hamburger'); hamburger.classList.contains('active') ? hamburger.classList.remove('active') : hamburger.classList.add('active');"><svg
+                    width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                </svg></button>
+        </div>
+        <ul class="nav__links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+        </ul>
+    </nav>
+</header>

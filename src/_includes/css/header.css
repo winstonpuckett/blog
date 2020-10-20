@@ -1,0 +1,111 @@
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav__bar {
+    z-index: 2;
+    display: flex;
+    background: var(--c-foreground-dark);
+    height: 100px;
+}
+
+.nav__homebutton {
+    display: flex;
+    margin: 10px;
+    text-decoration: none;
+    color: var(--c-background);
+    font-family: "Roboto", Helvetica, sans-serif;
+}
+
+.nav__logo {
+    font-size: 2em;
+    margin: 10px;
+}
+
+.nav__titlewrapper {
+    display: flex;
+    flex-direction: column;
+    margin: auto 10px;
+    width: 100%;
+}
+
+.nav__title {
+    font-weight: bold;
+}
+
+.nav__subtitle {
+    font-weight: 100;
+    font-size: 12px;
+    color: var(--c-border);
+}
+
+.nav__hamburger {
+    padding: 0;
+    margin: auto 20px auto auto;
+    width: 2em;
+    height: 2em;
+    background: transparent;
+    border: transparent;
+    color: var(--c-background);
+    transition: transform .5s;
+    outline: none;
+}
+
+.nav__hamburger.active {
+    transform: rotate(90deg);
+}
+
+.nav__links {
+    display: block;
+    flex-direction: column;
+    position: absolute;
+    left: 0;
+    top: 100px;
+    width: 100%;
+    height: 100vh;
+    transform: translateY(-120%);
+    transition: transform .5s ease;
+    background-color: var(--c-foreground-dark);
+    margin: 0;
+    padding: 0;
+}
+
+.nav__links.active {
+    transform: translateY(0%);
+}
+
+.nav__links>li:nth-child(1) {
+    border-top: 1px solid var(--c-foreground-light);
+}
+
+.nav__links>li {
+    list-style: none;
+    padding: 10px 0;
+    font-size: 16px;
+    border-bottom: 1px solid var(--c-foreground-light);
+    text-align: right;
+    width: 95%;
+    margin: auto;
+}
+
+.nav__links>li>a {
+    font-weight: 100;
+    color: var(--c-background);
+    text-decoration: none;
+    margin: auto;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+a:active {
+    color: yellow;
+}
+
+.avatar {
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 100%;
+    border: 3px solid var(--c-highlight);
+    box-shadow: 0 0 1px 7px rgba(16, 188, 249, .2);
+}
