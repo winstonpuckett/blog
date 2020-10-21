@@ -63,7 +63,7 @@ nav {
     left: 0;
     top: 100px;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     transform: translateY(-120%);
     transition: transform .5s ease;
     background-color: var(--c-foreground-dark);
