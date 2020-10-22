@@ -54,6 +54,7 @@ code,
 pre {
     font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
     font-size: 0.88889rem;
+    overflow-x: auto;
 }
 
 h1,
