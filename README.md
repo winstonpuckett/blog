@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/0d6b5c58-6319-48c4-975f-ec5df3e5c478/deploy-status)](https://app.netlify.com/sites/winstonpuckett/deploys)
+
 # Installation
 Prerequisites:
 - npm: https://www.npmjs.com/
