@@ -1,0 +1,9 @@
+.social__wrapper {
+    display: inline-block;
+    margin: auto 0;
+    margin-left: auto;
+}
+
+.social__link {
+    text-decoration: none;
+}

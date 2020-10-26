@@ -43,8 +43,7 @@ permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
     {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
     {{ posts }}
 </aside>
-<footer>
-    <p>&copy; all rights reserved.</p>
-</footer>
+{% capture footer %}{% include components/footer.liquid %}{% endcapture %}
+{{ footer }}
 </body>
 </html>

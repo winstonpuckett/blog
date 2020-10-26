@@ -20,8 +20,7 @@
     {{ header }}
     {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
     {{ posts }}
-<footer>
-    <p>&copy; all rights reserved.</p>
-</footer>
+    {% capture footer %}{% include components/footer.liquid %}{% endcapture %}
+    {{ footer }}
 </body>
 </html>
