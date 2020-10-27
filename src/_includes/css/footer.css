@@ -1,7 +1,19 @@
+footer {
+    border-top: 1px solid var(--c-border);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+}
+
+.copywrite__notice {
+    margin: 20px;
+}
+
 .social__wrapper {
     display: inline-block;
-    margin: auto 0;
-    margin-left: auto;
+    margin: auto 20px;
 }
 
 .social__link {

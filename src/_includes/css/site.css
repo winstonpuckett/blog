@@ -9,7 +9,7 @@
 }
 
 html {
-    font-family: "Roboto", Helvetica, sans-serif;
+    font-family: Helvetica, sans-serif;
     font-size: 112.5%;
     height: 100%;
     min-height: 100%;
@@ -75,15 +75,4 @@ h4 {
     content: "";
     height: 3px;
     margin-top: 1rem;
-}
-
-footer {
-    border-top: 1px solid var(--c-border);
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    padding: 0 20px;
 }

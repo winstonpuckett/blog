@@ -1,7 +1,7 @@
 {% capture footerCss %}{% include css/footer.css %}{% endcapture %}
 <style>{{ footerCss | cssmin | safe }}</style>
 <footer>
-<p>&copy; all rights reserved.</p>
+<p class="copywrite__notice">&copy; all rights reserved.</p>
 <div class="social__wrapper">
 
 {% if env.SOCIAL_DEVTO and env.SOCIAL_DEVTO != "" %}
