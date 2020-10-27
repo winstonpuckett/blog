@@ -30,9 +30,10 @@ permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
 {{ header }}
 
 <main>
-    <img loading="lazy" src="{{ post.cover_image }}" alt="this post's header image">
-    <h1 class="post__title">{{ post.title }}</h1>
-    {{ post.body_markdown | removeMdMetadata }}
+<img loading="lazy" src="{{ post.cover_image }}" alt="this post's header image">
+<h1 class="post__title">{{ post.title }}</h1>
+
+{{ post.body_markdown | removeMdMetadata }}
 
 <a href="https://dev.to/{{ devProfile.username }}/{{ post.slug }}" rel="noreferrer"  target="_blank">Respond to this post and join the conversation on DEV</a>
 
