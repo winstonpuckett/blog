@@ -3,12 +3,33 @@
 <div class="cards">
 
 {%- for post in devPosts -%}
-    <div class="card">
-        <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title }}"></a>
-        <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
-        <p class="card__description">{{ post.description }}</p>
-        <p class="card__date">{{ post.published_at | formatDate }}</p>
-    </div>
-{%- endfor -%}
+    {% for currentPostTag in currentPost.tag_list %}
+        {% if post.title == currentPost.title %}
+            {% continue %}
+        {% endif%}
 
+        {% assign found_match = false %}
+        {% for postTag in post.tag_list %}
+            {% if currentPostTag == postTag%}
+<div class="card">
+    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title }}"></a>
+    <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
+    <p class="card__description">{{ post.description }}</p>
+    <p class="card__date">{{ post.published_at | formatDate }}</p>
 </div>
+                {% assign found_match = true %}
+            {% endif %}
+        {% endfor %}
+
+        {% if found_match == true %}
+            {% break %}
+        {% endif %}
+    {% else %}
+<div class="card">
+    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title }}"></a>
+    <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
+    <p class="card__description">{{ post.description }}</p>
+    <p class="card__date">{{ post.published_at | formatDate }}</p>
+</div>
+    {% endfor %}
+{%- endfor -%}

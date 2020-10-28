@@ -40,6 +40,7 @@ permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
 <hr>
 </main>
 <aside>
+    {% assign currentPost = post %}
     {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
     {{ posts }}
 </aside>
