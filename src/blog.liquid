@@ -17,6 +17,8 @@
     <style>{{ siteCss | cssmin | safe }}</style>
     {% capture header %}{% include components/header.liquid %}{% endcapture %}
     {{ header }}
+    {% capture postsFilter %}{% include components/postsFilter.liquid %}{% endcapture %}
+    {{ postsFilter }}
     {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
     {{ posts }}
     {% capture footer %}{% include components/footer.liquid %}{% endcapture %}

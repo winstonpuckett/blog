@@ -1,0 +1,44 @@
+    .postsfilter__wrapper {
+        padding: 0 10px;
+        margin: 10px auto;
+        background: var(--c-foreground-dark);
+        border-radius: 40px;
+        width: fit-content;
+    }
+    
+    .postsfilter__input {
+        float: left;
+        width: 0;
+        outline: none;
+        padding: 0;
+        border: none;
+        background: transparent;
+        color: var(--c-background);
+        line-height: 40px;
+        transition: width 0.4s;
+    }
+    
+    .postsfilter__input.active {
+        width: 70vw;
+    }
+    
+    @media only screen and (min-width: 900px) {
+        .postsfilter__input.active {
+            width: 40vw;
+        }
+    }
+    
+    .postsfilter__icon {
+        border: none;
+        outline: none;
+        display: flex;
+        justify-content: center;
+        float: right;
+        height: 40px;
+        width: 20px;
+        background: var(--c-foreground-dark);
+        border-radius: 100%;
+        font-size: 30px;
+        line-height: 34px;
+        color: var(--c-background);
+    }

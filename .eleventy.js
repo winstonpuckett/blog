@@ -1,4 +1,5 @@
 const CleanCSS = require("clean-css");
+const { minify } = require("terser");
 
 module.exports = function(eleventyConfig) {
     // #region filters
@@ -16,8 +17,28 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("removeMdMetadata", function(value) {
         return value.replace(/---.+---/gms, '');
     });
+    eleventyConfig.addFilter("removeNewLines", function(value) {
+        if (value.replace) {
+            return value.replace(/\n/gms, '');
+        } else {
+            return value;
+        }
+    });
     eleventyConfig.addFilter("cssmin", function(code) {
         return new CleanCSS({}).minify(code).styles;
+    });
+    eleventyConfig.addFilter("jsmin", async function(
+        code,
+        callback
+    ) {
+        try {
+            const minified = await minify(code);
+            callback(null, minified.code);
+        } catch (err) {
+            console.error("Terser error: ", err);
+            // Fail gracefully.
+            callback(null, code);
+        }
     });
     eleventyConfig.addFilter("formatDate", function(date) {
         const year = date.slice(0, 4);
