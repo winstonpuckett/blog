@@ -21,19 +21,6 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("cssmin", function(code) {
         return new CleanCSS({}).minify(code).styles;
     });
-    eleventyConfig.addFilter("jsmin", async function(
-        code,
-        callback
-    ) {
-        try {
-            const minified = await minify(code);
-            callback(null, minified.code);
-        } catch (err) {
-            console.error("Terser error: ", err);
-            // Fail gracefully.
-            callback(null, code);
-        }
-    });
     eleventyConfig.addFilter("formatDate", function(date) {
         const year = date.slice(0, 4);
         const monthNumber = date.slice(5, 7);
@@ -84,6 +71,7 @@ module.exports = function(eleventyConfig) {
     });
     // #endregion filters
 
+    // #region transform
     eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
         if (outputPath.endsWith(".html")) {
             let minified = htmlmin.minify(content, {
@@ -96,6 +84,12 @@ module.exports = function(eleventyConfig) {
 
         return content;
     });
+    // #endregion transform
+
+    // #region passthrough
+    eleventyConfig.addPassthroughCopy({ "src/_includes/js/postsFilter.js": "assets/js/postsFilter.js" });
+    eleventyConfig.addPassthroughCopy({ "src/_includes/css/footer.css": "assets/css/footer.css" });
+    // #endregion passthrough
 
     return {
         dir: {

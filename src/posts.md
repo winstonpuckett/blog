@@ -1,8 +1,10 @@
 ---
+tags: post
 pagination:
     data: devPosts
     size: 1
     alias: post
+    addAllPagesToCollections: true
 permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
 ---
 

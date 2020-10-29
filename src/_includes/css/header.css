@@ -24,10 +24,19 @@ nav {
 }
 
 .nav__titlewrapper {
-    display: flex;
-    flex-direction: column;
-    margin: auto 10px;
-    width: 100%;
+    display: none;
+}
+
+
+/* show the title on bigger screens */
+
+@media only screen and (min-width: 400px) {
+    .nav__titlewrapper {
+        display: flex;
+        flex-direction: column;
+        margin: auto 10px;
+        width: 100%;
+    }
 }
 
 .nav__title {
