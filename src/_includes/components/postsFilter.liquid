@@ -1,7 +1,7 @@
 {% capture postsFilterCss %}{% include css/postsFilter.css %}{% endcapture %}
 <style>{{ postsFilterCss | cssmin | safe }}</style>
 
-{% capture postFilterScript %}{% include js/filterposts.js %}{% endcapture %}
+{% capture postFilterScript %}{% include js/filterPosts.js %}{% endcapture %}
 <script>{{ postFilterScript }}</script>
 
 <div class="postsfilter__wrapper" onclick="showPostsFilter();">
