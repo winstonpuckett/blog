@@ -1,5 +1,6 @@
 const CleanCSS = require("clean-css");
 const { minify } = require("terser");
+const htmlmin = require("html-minifier");
 
 module.exports = function(eleventyConfig) {
     // #region filters
@@ -7,7 +8,7 @@ module.exports = function(eleventyConfig) {
         return value.toString();
     });
     eleventyConfig.addFilter("removeQuotes", function(value) {
-        value = value.replace(/"/g, '')
+        value = value.replace(/["']/g, '')
         return value;
     });
     eleventyConfig.addFilter("removeNonAlphanumericCharacters", function(value) {
@@ -16,13 +17,6 @@ module.exports = function(eleventyConfig) {
     });
     eleventyConfig.addFilter("removeMdMetadata", function(value) {
         return value.replace(/---.+---/gms, '');
-    });
-    eleventyConfig.addFilter("removeNewLines", function(value) {
-        if (value.replace) {
-            return value.replace(/\n/gms, '');
-        } else {
-            return value;
-        }
     });
     eleventyConfig.addFilter("cssmin", function(code) {
         return new CleanCSS({}).minify(code).styles;
@@ -89,6 +83,19 @@ module.exports = function(eleventyConfig) {
         return formattedDate;
     });
     // #endregion filters
+
+    eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+        if (outputPath.endsWith(".html")) {
+            let minified = htmlmin.minify(content, {
+                useShortDoctype: true,
+                removeComments: true,
+                collapseWhitespace: true
+            });
+            return minified;
+        }
+
+        return content;
+    });
 
     return {
         dir: {

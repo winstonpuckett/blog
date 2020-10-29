@@ -11,8 +11,8 @@
         {% assign found_match = false %}
         {% for postTag in post.tag_list %}
             {% if currentPostTag == postTag%}
-<div class="card" data-post-tags='{{ post.tag_list | removeNewLines }}' data-post-title="{{ post.title }}">
-    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title }}"></a>
+<div class="card" data-post-tags='{{ post.tag_list }}' data-post-title='{{ post.title | removeQuotes }}''>
+    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title | removeQuotes }}"></a>
     <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
     <p class="card__description">{{ post.description }}</p>
     <p class="card__date">{{ post.published_at | formatDate }}</p>
@@ -25,8 +25,8 @@
             {% break %}
         {% endif %}
     {% else %}
-<div class="card" data-post-tags='{{ post.tag_list | removeNewLines | safe }}' data-post-title="{{ post.title }}">
-    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title }}"></a>
+<div class="card" data-post-tags='{{ post.tag_list | safe }}' data-post-title='{{ post.title | removeQuotes }}'>
+    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title | removeQuotes }}"></a>
     <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
     <p class="card__description">{{ post.description }}</p>
     <p class="card__date">{{ post.published_at | formatDate }}</p>
