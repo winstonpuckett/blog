@@ -1,4 +1,3 @@
-console.log("Hi");
 let cards = []
 window.addEventListener('load', () => {
     cards = document.querySelectorAll('.card')
