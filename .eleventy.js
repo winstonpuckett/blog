@@ -90,7 +90,7 @@ module.exports = function(eleventyConfig) {
     // #endregion transform
 
     // #region passthrough
-    eleventyConfig.addPassthroughCopy({ "src/_includes/js": "assets/js/postsFilter.js" });
+    eleventyConfig.addPassthroughCopy({ "src/_includes/js": "assets/js/" });
     eleventyConfig.addPassthroughCopy({ "src/_includes/css/footer.css": "assets/css/footer.css" });
     // #endregion passthrough
 
