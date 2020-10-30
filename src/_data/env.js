@@ -2,6 +2,8 @@
 // the project. The "env" data source can be used in templates, but be aware that 
 // other data files might use process.env directly. For instance, devPosts.js.
 module.exports = {
+    SITE_URL: process.env.SITE_URL,
+
     // Your DEV API key
     DEV_API_KEY: process.env.DEV_API_KEY,
 

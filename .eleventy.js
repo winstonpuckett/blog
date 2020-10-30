@@ -1,6 +1,7 @@
 const CleanCSS = require("clean-css");
 const { minify } = require("terser");
 const htmlmin = require("html-minifier");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
     // #region filters
@@ -70,6 +71,8 @@ module.exports = function(eleventyConfig) {
         return formattedDate;
     });
     // #endregion filters
+
+    eleventyConfig.addPlugin(pluginRss);
 
     // #region transform
     eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
