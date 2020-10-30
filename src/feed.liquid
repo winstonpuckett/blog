@@ -7,9 +7,9 @@ eleventyExcludeFromCollections: true
   <title>{{ devProfile.name }}</title>
   <subtitle>{{ devProfile.summary }}</subtitle>
   <link href="{{ env.SITE_URL }}/feed.xml" rel="self"/>
-  <link href="{{ env.SITE_URL }}"/>
-  <updated>{{ collections.posts }}</updated>
-  <id>{{ env.SITE_URL }}</id>
+  <link href="{{ env.SITE_URL }}/"/>
+  <updated>{{ devPosts[0].published_at }}</updated>
+  <id>{{ env.SITE_URL }}/</id>
   <author>
     <name>{{ devProfile.name }}</name>
   </author>
