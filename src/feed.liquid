@@ -19,7 +19,7 @@ eleventyExcludeFromCollections: true
     <link href="{{ env.SITE_URL }}/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}"/>
     <updated>{{ post.published_at | rssDate }}</updated>
     <id>{{ env.SITE_URL }}/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}</id>
-    <summary>{{ post.description | htmlEncode }}</summary>
+    <summary>{{ post.description }}</summary>
   </entry>
   {%- endfor %}
 </feed>
