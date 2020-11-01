@@ -15,11 +15,11 @@ eleventyExcludeFromCollections: true
   </author>
   {%- for post in devPosts %}
   <entry>
-    <title>{{ post.title }}</title>
+    <title>{{ post.title | htmlEncode }}</title>
     <link href="{{ env.SITE_URL }}/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}"/>
     <updated>{{ post.published_at | rssDate }}</updated>
     <id>{{ env.SITE_URL }}/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}</id>
-    <content type="html">{{ post.description | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+    <summary>{{ post.description | htmlEncode }}</summary>
   </entry>
   {%- endfor %}
 </feed>

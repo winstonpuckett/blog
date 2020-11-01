@@ -5,6 +5,9 @@ const pluginRss = require("@11ty/eleventy-plugin-rss");
 
 module.exports = function(eleventyConfig) {
     // #region filters
+    eleventyConfig.addFilter("htmlEncode", function(value) {
+        return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    })
     eleventyConfig.addFilter("listToString", function(value) {
         return value.toString();
     });
