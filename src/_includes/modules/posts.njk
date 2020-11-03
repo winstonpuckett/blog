@@ -1,0 +1,50 @@
+{% macro filter() %}
+{% set postsFilterCss %}{% include 'css/postsFilter.css' %}{% endset %}
+<style>{{ postsFilterCss | cssmin | safe }}</style>
+
+<script defer src="/assets/js/postsFilter.js"></script>
+
+<div class="postsfilter__wrapper" onclick="showPostsFilter();">
+    <input class="postsfilter__input" type="text" placeholder="tag or title" oninput="filterPosts(this.value);">
+    <button class="postsfilter__icon">⌕</button>
+</div>
+{% endmacro %}
+
+
+{% macro cards(devPosts, currentPost) %}
+{% set postsCss %}{% include 'css/posts.css' %}{% endset %}
+<style>{{ postsCss | cssmin | safe }}</style>
+<div class="cards">
+
+{% for post in devPosts %}
+{% set found_match = false %}
+
+{% for currentPostTag in currentPost.tag_list %}
+{% if found_match == false and post.title != currentPost.title %}
+{% for postTag in post.tag_list %}
+
+{% if currentPostTag == postTag%}
+<div class="card" data-post-tags='{{ post.tag_list | toJsonArrayString }}' data-post-title='{{ post.title | removeQuotes }}''>
+    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title | removeQuotes }}"></a>
+    <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
+    <p class="card__description">{{ post.description }}</p>
+    <p class="card__date">{{ post.published_at | formatDate }}</p>
+</div>
+{% set found_match = true %}
+{% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% else %}
+<div class="card" data-post-tags='{{ post.tag_list | toJsonArrayString }}' data-post-title='{{ post.title | removeQuotes }}'>
+    <a href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}" ><image class="card__image" loading="lazy" src="{{ post.cover_image }}" alt="image for blog post: {{ post.title | removeQuotes }}"></a>
+    <a class="card__title" href="/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}">{{ post.title }}</a>
+    <p class="card__description">{{ post.description }}</p>
+    <p class="card__date">{{ post.published_at | formatDate }}</p>
+</div>
+{% endfor %}
+{% endfor %}
+</div>
+{% endmacro %}
+

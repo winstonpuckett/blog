@@ -8,8 +8,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("htmlEncode", function(value) {
         return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     })
-    eleventyConfig.addFilter("listToString", function(value) {
-        return value.toString();
+    eleventyConfig.addFilter("toJsonArrayString", function(value) {
+        return JSON.stringify(value) //`["${value.replace(/,/g, '","')}"]asdf`;
     });
     eleventyConfig.addFilter("removeQuotes", function(value) {
         value = value.replace(/["']/g, '')
@@ -73,7 +73,17 @@ module.exports = function(eleventyConfig) {
         const formattedDate = `${month} ${day}, ${year}`
         return formattedDate;
     });
-    // #endregion filters
+    eleventyConfig.addNunjucksAsyncFilter("jsmin", async function(code, callback) {
+            try {
+                const minified = await minify(code);
+                callback(null, minified.code);
+            } catch (err) {
+                console.err("Terser error: ", err);
+                // Fail gracefully.
+                callback(null, code);
+            }
+        })
+        // #endregion filters
 
     eleventyConfig.addPlugin(pluginRss);
 
@@ -91,11 +101,6 @@ module.exports = function(eleventyConfig) {
         return content;
     });
     // #endregion transform
-
-    // #region passthrough
-    eleventyConfig.addPassthroughCopy({ "src/_includes/js": "assets/js/" });
-    eleventyConfig.addPassthroughCopy({ "src/_includes/css/footer.css": "assets/css/footer.css" });
-    // #endregion passthrough
 
     return {
         dir: {

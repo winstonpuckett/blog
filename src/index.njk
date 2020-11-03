@@ -1,3 +1,8 @@
+{% import "modules/sections.njk" as sections %}
+{% import "modules/analytics.njk" as analytics %}
+{% import "modules/monetization.njk" as monetization %}
+{% import "modules/posts.njk" as postsModule %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,27 +15,23 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦦</text></svg>">
     <link defer rel="stylesheet" href="/assets/css/footer.css">
     <title>Winston Puckett</title>
-    {% capture googleAnalytics %}{% include components/googleAnalytics.liquid %}{% endcapture %}
-    {{ googleAnalytics }}
-    {% capture monetizationLink %}{% include components/monetizationMetaTag.liquid %}{% endcapture %}
-    {{ monetizationLink }}
+
+    {{ analytics.all() }}
+    {{ monetization.all() }}
 </head>
 <body>
+{% set siteCss %}{% include 'css/site.css' %}{% endset %}
+<style>{{ siteCss | cssmin | safe }}</style>
+{{ sections.header(devProfile) }}
 
-{% capture css %}{% include css/site.css %}{% endcapture %}
-<style>{{ css | cssmin | safe }}</style>
-{% capture header %}{% include components/header.liquid %}{% endcapture %}
-{{ header }}
 
 <main>
     <h1>Really? Another developer blog?</h1>
     <p>Yes. Our attention is too easily drawn to shiny new APIs that promise to abstract all of our problems away. It's important to learn new technologies, but our legacy code often prevents us from porting to new ideas or even doing meaningful work. I want to find new ways to create a code base that allows us to add new features and port to new frameworks easily. The longer our codebase exists, the easier it should be to work with it. Not the other way around.</p>
     <p>So keep reading. Add your wisdom. Let's discover things.</p>
     <hr>
-    {% capture posts %}{% include components/postCards.liquid %}{% endcapture %}
-    {{ posts }}
+    {{ postsModule.cards(devPosts) }}
 </main>
-{% capture footer %}{% include components/footer.liquid %}{% endcapture %}
-{{ footer }}
+    {{ sections.footer(env) }}
 </body>
 </html>

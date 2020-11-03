@@ -1,3 +1,8 @@
+{% import "modules/sections.njk" as sectionsModule %}
+{% import "modules/analytics.njk" as analyticsModule %}
+{% import "modules/monetization.njk" as monetizationModule %}
+{% import "modules/posts.njk" as postsModule %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,21 +15,16 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦦</text></svg>">
     <link defer rel="stylesheet" href="/assets/css/footer.css">
     <title>Blog | Winston Puckett</title>
-    {% capture googleAnalytics %}{% include components/googleAnalytics.liquid %}{% endcapture %}
-    {{ googleAnalytics }}
-    {% capture monetizationLink %}{% include components/monetizationMetaTag.liquid %}{% endcapture %}
-    {{ monetizationLink }}
+
+    {{ analyticsModule.all() }}
+    {{ monetizationModule.all() }}
 </head>
 <body>
-    {% capture siteCss %}{% include css/site.css %}{% endcapture %}
+    {% set siteCss %}{% include 'css/site.css' %}{% endset %}
     <style>{{ siteCss | cssmin | safe }}</style>
-    {% capture header %}{% include components/header.liquid %}{% endcapture %}
-    {{ header }}
-    {% capture postsFilter %}{% include components/postsFilter.liquid %}{% endcapture %}
-    {{ postsFilter }}
-    {% capture posts %}{% include components/postCards.liquid %}{% endcapture %}
-    {{ posts }}
-    {% capture footer %}{% include components/footer.liquid %}{% endcapture %}
-    {{ footer }}
+    {{ sectionsModule.header(devProfile) }}
+    {{ postsModule.filter() }}
+{{ postsModule.cards(devPosts) }}
+{{ sectionsModule.footer(env) }}
 </body>
 </html>

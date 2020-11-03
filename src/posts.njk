@@ -6,8 +6,13 @@ pagination:
     alias: post
     addAllPagesToCollections: true
 permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
-templateEngineOverride: liquid,md
+templateEngineOverride: njk, md
 ---
+
+{% import "modules/sections.njk" as sections %}
+{% import "modules/analytics.njk" as analytics %}
+{% import "modules/monetization.njk" as monetization %}
+{% import "modules/posts.njk" as postsModule %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,42 +20,35 @@ templateEngineOverride: liquid,md
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ post.description | removeQuotes }}">
-    <meta name="keywords" content="{{ post.tag_list | listToString }}">
+    <meta name="keywords" content="{{ post.tag_list }}">
     <meta name="date" content="{{ post.published_at }}">
     <meta name="author" content="{{ devProfile.name }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦦</text></svg>">
     <link defer rel="stylesheet" href="/assets/css/footer.css">
-    <title>{{ post.title }}</title>
-    {% capture googleAnalytics %}{% include components/googleAnalytics.liquid %}{% endcapture %}
-    {{ googleAnalytics }}
-    {% capture googleAdsense %}{% include components/googleAdsense.liquid %}{% endcapture %}
-    {{ googleAdsense }}
-    {% capture monetizationLink %}{% include components/monetizationMetaTag.liquid %}{% endcapture %}
-    {{ monetizationLink }}
+    <title>{{ post.title | safe }}</title>
+
+    {{ analytics.all() | safe }}
+    {{ monetization.all() | safe }}
 </head>
 <body>
-{% capture css %}{% include css/site.css %}{% endcapture %}
-<style>{{ css | cssmin | safe }}</style>
+{% set siteCss %}{% include 'css/site.css' %}{% endset %}
+<style>{{ siteCss | cssmin | safe }}</style>
 
-{% capture header %}{% include components/header.liquid %}{% endcapture %}
-{{ header }}
+{{ sections.header(devProfile) }}
 
 <main>
 <img loading="lazy" src="{{ post.cover_image }}" alt="this post's header image">
 <h1 class="post__title">{{ post.title }}</h1>
 
-{{ post.body_markdown | removeMdMetadata }}
+{{ post.body_markdown | removeMdMetadata | safe }}
 
 <a href="https://dev.to/{{ devProfile.username }}/{{ post.slug }}" rel="noreferrer"  target="_blank">Respond to this post and join the conversation on DEV</a>
 
 <hr>
 </main>
 <aside>
-    {% assign currentPost = post %}
-    {% capture posts %}{% include components/postCards.liquid %}{% endcapture %}
-    {{ posts }}
+    {{ postsModule.cards(devPosts, post) | safe }}
 </aside>
-{% capture footer %}{% include components/footer.liquid %}{% endcapture %}
-{{ footer }}
+    {{ sections.footer(env) | safe }}
 </body>
 </html>
