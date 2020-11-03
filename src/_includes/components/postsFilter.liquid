@@ -1,9 +1,0 @@
-{% capture postsFilterCss %}{% include css/postsFilter.css %}{% endcapture %}
-<style>{{ postsFilterCss | cssmin | safe }}</style>
-
-<script defer src="/assets/js/filterPosts.js"></script>
-
-<div class="postsfilter__wrapper" onclick="showPostsFilter();">
-    <input class="postsfilter__input" type="text" placeholder="tag or title" oninput="filterPosts(this.value);">
-    <button class="postsfilter__icon">⌕</button>
-</div>

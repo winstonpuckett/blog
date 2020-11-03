@@ -1,0 +1,18 @@
+{% macro all(env) %}
+    {{ google(env) }}
+{% endmacro %}
+
+
+{% macro google(env) %}
+    {% if env.GOOGLE_ANALYTICS_TRACKING_ID and env.GOOGLE_ANALYTICS_TRACKING_ID != "" %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env.GOOGLE_ANALYTICS_TRACKING_ID }}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{ env.GOOGLE_ANALYTICS_TRACKING_ID }}');
+    </script>
+    {% endif %}
+{% endmacro %}

@@ -2,7 +2,7 @@
 permalink: "feed.xml"
 eleventyExcludeFromCollections: true
 ---
-<?xml version="1.0" encoding="utf-8"?>
+{# <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ devProfile.name }}</title>
   <subtitle>{{ devProfile.summary }}</subtitle>
@@ -22,4 +22,4 @@ eleventyExcludeFromCollections: true
     <content src="{{ env.SITE_URL }}/posts/{{ post.title | removeNonAlphanumericCharacters | slug }}"></content>
   </entry>
   {%- endfor %}
-</feed>
+</feed> #}

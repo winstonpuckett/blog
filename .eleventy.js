@@ -8,8 +8,8 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addFilter("htmlEncode", function(value) {
         return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     })
-    eleventyConfig.addFilter("listToString", function(value) {
-        return value.toString();
+    eleventyConfig.addFilter("toJsonArrayString", function(value) {
+        return JSON.stringify(value) //`["${value.replace(/,/g, '","')}"]asdf`;
     });
     eleventyConfig.addFilter("removeQuotes", function(value) {
         value = value.replace(/["']/g, '')
