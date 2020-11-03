@@ -2,7 +2,7 @@
 {% set postsFilterCss %}{% include 'css/postsFilter.css' %}{% endset %}
 <style>{{ postsFilterCss | cssmin | safe }}</style>
 
-<script defer src="/assets/js/filterPosts.js"></script>
+<script defer src="/assets/js/postsFilter.js"></script>
 
 <div class="postsfilter__wrapper" onclick="showPostsFilter();">
     <input class="postsfilter__input" type="text" placeholder="tag or title" oninput="filterPosts(this.value);">
@@ -44,6 +44,7 @@
     <p class="card__date">{{ post.published_at | formatDate }}</p>
 </div>
 {% endfor %}
-{%- endfor -%}
+{% endfor %}
+</div>
 {% endmacro %}
 

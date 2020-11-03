@@ -25,10 +25,10 @@ templateEngineOverride: njk, md
     <meta name="author" content="{{ devProfile.name }}">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🦦</text></svg>">
     <link defer rel="stylesheet" href="/assets/css/footer.css">
-    <title>{{ post.title }}</title>
+    <title>{{ post.title | safe }}</title>
 
-    {{ analytics.all() }}
-    {{ monetization.all() }}
+    {{ analytics.all() | safe }}
+    {{ monetization.all() | safe }}
 </head>
 <body>
 {% set siteCss %}{% include 'css/site.css' %}{% endset %}
@@ -40,15 +40,15 @@ templateEngineOverride: njk, md
 <img loading="lazy" src="{{ post.cover_image }}" alt="this post's header image">
 <h1 class="post__title">{{ post.title }}</h1>
 
-{{ post.body_markdown | removeMdMetadata }}
+{{ post.body_markdown | removeMdMetadata | safe }}
 
 <a href="https://dev.to/{{ devProfile.username }}/{{ post.slug }}" rel="noreferrer"  target="_blank">Respond to this post and join the conversation on DEV</a>
 
 <hr>
 </main>
 <aside>
-    {{ postsModule.cards(devPosts, post) }}
+    {{ postsModule.cards(devPosts, post) | safe }}
 </aside>
-    {{ sections.footer(env) }}
+    {{ sections.footer(env) | safe }}
 </body>
 </html>
