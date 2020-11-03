@@ -7,9 +7,13 @@ module.exports = {
     // Your DEV API key
     DEV_API_KEY: process.env.DEV_API_KEY,
 
-    // Google Analytics / Adsense
+    // Analytics
     GOOGLE_ANALYTICS_TRACKING_ID: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+
+    // Monetization
     GOOGLE_ADSENSE_DATA_AD_CLIENT: process.env.GOOGLE_ADSENSE_DATA_AD_CLIENT,
+    MONETIZATION_LINK: process.env.MONETIZATION_LINK, // https://coil.com/creator/how-to-monetize#On-my-own-site
+
 
     // social links (please provide the whole link as you would see it in the address bar)
     SOCIAL_DEVTO: process.env.SOCIAL_DEVTO,
