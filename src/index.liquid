@@ -12,6 +12,8 @@
     <title>Winston Puckett</title>
     {% capture googleAnalytics %}{% include components/googleAnalytics.liquid %}{% endcapture %}
     {{ googleAnalytics }}
+    {% capture monetizationLink %}{% include components/monetizationMetaTag.liquid %}{% endcapture %}
+    {{ monetizationLink }}
 </head>
 <body>
 
@@ -25,7 +27,7 @@
     <p>Yes. Our attention is too easily drawn to shiny new APIs that promise to abstract all of our problems away. It's important to learn new technologies, but our legacy code often prevents us from porting to new ideas or even doing meaningful work. I want to find new ways to create a code base that allows us to add new features and port to new frameworks easily. The longer our codebase exists, the easier it should be to work with it. Not the other way around.</p>
     <p>So keep reading. Add your wisdom. Let's discover things.</p>
     <hr>
-    {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
+    {% capture posts %}{% include components/postCards.liquid %}{% endcapture %}
     {{ posts }}
 </main>
 {% capture footer %}{% include components/footer.liquid %}{% endcapture %}

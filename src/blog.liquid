@@ -12,6 +12,8 @@
     <title>Blog | Winston Puckett</title>
     {% capture googleAnalytics %}{% include components/googleAnalytics.liquid %}{% endcapture %}
     {{ googleAnalytics }}
+    {% capture monetizationLink %}{% include components/monetizationMetaTag.liquid %}{% endcapture %}
+    {{ monetizationLink }}
 </head>
 <body>
     {% capture siteCss %}{% include css/site.css %}{% endcapture %}
@@ -20,7 +22,7 @@
     {{ header }}
     {% capture postsFilter %}{% include components/postsFilter.liquid %}{% endcapture %}
     {{ postsFilter }}
-    {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
+    {% capture posts %}{% include components/postCards.liquid %}{% endcapture %}
     {{ posts }}
     {% capture footer %}{% include components/footer.liquid %}{% endcapture %}
     {{ footer }}

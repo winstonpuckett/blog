@@ -6,6 +6,7 @@ pagination:
     alias: post
     addAllPagesToCollections: true
 permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
+templateEngineOverride: liquid,md
 ---
 
 <!DOCTYPE html>
@@ -24,6 +25,8 @@ permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
     {{ googleAnalytics }}
     {% capture googleAdsense %}{% include components/googleAdsense.liquid %}{% endcapture %}
     {{ googleAdsense }}
+    {% capture monetizationLink %}{% include components/monetizationMetaTag.liquid %}{% endcapture %}
+    {{ monetizationLink }}
 </head>
 <body>
 {% capture css %}{% include css/site.css %}{% endcapture %}
@@ -44,7 +47,7 @@ permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
 </main>
 <aside>
     {% assign currentPost = post %}
-    {% capture posts %}{% include components/posts.liquid %}{% endcapture %}
+    {% capture posts %}{% include components/postCards.liquid %}{% endcapture %}
     {{ posts }}
 </aside>
 {% capture footer %}{% include components/footer.liquid %}{% endcapture %}
