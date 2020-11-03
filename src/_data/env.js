@@ -12,7 +12,7 @@ module.exports = {
 
     // Monetization
     GOOGLE_ADSENSE_DATA_AD_CLIENT: process.env.GOOGLE_ADSENSE_DATA_AD_CLIENT,
-    MONETIZATION_LINK: process.env.MONETIZATION_LINK, // https://coil.com/creator/how-to-monetize#On-my-own-site
+    PAYMENT_POINTER: process.env.PAYMENT_POINTER, // https://coil.com/creator/how-to-monetize#On-my-own-site
 
 
     // social links (please provide the whole link as you would see it in the address bar)
