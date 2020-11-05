@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{ devProfile.name }}</title>
   <subtitle>{{ devProfile.summary }}</subtitle>
-  <link href"{{ env.SITE_URL }}/feed.xml" rel="self"/>
+  <link href="{{ env.SITE_URL }}/feed.xml" rel="self"/>
   <link href="{{ env.SITE_URL }}/"/>
   <updated>{{ collections.posts | rssLastUpdatedDate }}</updated>
   <id>{{ env.SITE_URL }}/</id>
