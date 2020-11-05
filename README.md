@@ -11,3 +11,5 @@ Steps:
 1. Run "npm install"
 1. Run "eleventy --serve"
 1. View your blog! https://localhost:8080
+
+After you've played around, check out src/_data/env.js for optional features like monetization, analytics, and site mapping.

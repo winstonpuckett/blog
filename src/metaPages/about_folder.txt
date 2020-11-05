@@ -1,0 +1,8 @@
+This folder contains any pages which relate to the site's metadata.
+
+- robots.txt
+- sitemap.xml
+- humans.txt
+- rss feed files
+
+...are examples of what you might find here

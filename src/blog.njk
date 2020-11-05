@@ -24,7 +24,7 @@
     <style>{{ siteCss | cssmin | safe }}</style>
     {{ sectionsModule.header(devProfile) }}
     {{ postsModule.filter() }}
-{{ postsModule.cards(devPosts) }}
-{{ sectionsModule.footer(env) }}
+    {{ postsModule.cards(devPosts) }}
+    {{ sectionsModule.footer(env) }}
 </body>
 </html>
