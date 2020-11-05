@@ -73,6 +73,24 @@ module.exports = function(eleventyConfig) {
         const formattedDate = `${month} ${day}, ${year}`
         return formattedDate;
     });
+    eleventyConfig.addFilter("getTitleFromHtml", function(html) {
+        try {
+            const title = html.match(/(?:<title>)(.+)(?:<\/title>)/)[1];
+            return title;
+        } catch (err) {
+            console.error('We couldn\'t grab a title tag. Check that you\'re passing in a string and that your html content actually has a tag like: <title>Some title</title>', err);
+            return html;
+        }
+    });
+    eleventyConfig.addFilter("getDateFromHtml", function(html) {
+        try {
+            const date = html.match(/(?:<meta name="date" content=")(.+)(?:">)/)[1];
+            return date;
+        } catch (err) {
+            console.error('We couldn\'t grab a meta tag with name="date". Check that you\'re passing in a string and that your html content actually has a tag like: <meta name="date" content="Some date">', err);
+            return html;
+        }
+    })
     eleventyConfig.addNunjucksAsyncFilter("jsmin", async function(code, callback) {
             try {
                 const minified = await minify(code);

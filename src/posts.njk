@@ -1,10 +1,11 @@
 ---
-tags: post
+tags: posts
 pagination:
     data: devPosts
     size: 1
     alias: post
     addAllPagesToCollections: true
+    title: "{{ post.title }}"
 permalink: "posts/{{ post.title | removeNonAlphanumericCharacters | slug }}/"
 templateEngineOverride: njk, md
 ---
@@ -49,6 +50,7 @@ templateEngineOverride: njk, md
 <aside>
     {{ postsModule.cards(devPosts, post) | safe }}
 </aside>
-    {{ sections.footer(env) | safe }}
+
+{{ sections.footer(env) | safe }}
 </body>
 </html>
