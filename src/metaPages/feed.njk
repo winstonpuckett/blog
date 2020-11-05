@@ -14,13 +14,13 @@ eleventyExcludeFromCollections: true
     <name>{{ devProfile.name }}</name>
   </author>
   {%- for post in collections.posts %}
-  {% set absolutePostUrl %}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
+  {% set absolutePostUrl %}{{ env.SITE_URL }}{{ post.url | url | absoluteUrl(metadata.url) }}{% endset %}
   <entry>
     <title>{{ post.templateContent | getTitleFromHtml }}</title>
     <link href="{{ absolutePostUrl }}"/>
     <updated>{{ post.templateContent | getDateFromHtml }}</updated>
     <id>{{ absolutePostUrl }}</id>
-    <content type="html">{{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}</content>
+    <content type="html">{{ post.templateContent | safe }}</content>
   </entry>
   {%- endfor %}
 </feed>
