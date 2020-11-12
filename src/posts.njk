@@ -28,8 +28,8 @@ templateEngineOverride: njk, md
     <link defer rel="stylesheet" href="/assets/css/footer.css">
     <title>{{ post.title | safe }}</title>
 
-    {{ analytics.all() | safe }}
-    {{ monetization.all() | safe }}
+    {{ analytics.all(env) | safe }}
+    {{ monetization.all(env) | safe }}
 </head>
 <body>
 {% set siteCss %}{% include 'css/site.css' %}{% endset %}

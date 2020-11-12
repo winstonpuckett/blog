@@ -16,8 +16,8 @@
     <link defer rel="stylesheet" href="/assets/css/footer.css">
     <title>Blog | Winston Puckett</title>
 
-    {{ analyticsModule.all() }}
-    {{ monetizationModule.all() }}
+    {{ analyticsModule.all(env) }}
+    {{ monetizationModule.all(env) }}
 </head>
 <body>
     {% set siteCss %}{% include 'css/site.css' %}{% endset %}
